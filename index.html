@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+
+    body {
+      background-color: rgb(40, 40, 40);
+      overflow-x: hidden;
+    }
+
+    .container {
+      max-width: 1140px;
+      margin: auto;
+      color: white;
+      padding: 0 1rem;
+    }
+
+    header {
+      background: #000;
+    }
+
+    .header__container {
+      display: grid;
+      grid-template-columns: 10rem 1fr;
+      align-items: center;
+      padding: 1rem 0.5rem;
+    }
+
+    nav {
+      background: red;
+      position: absolute;
+      top: 0;
+      right: -90%;
+      width: 70%;
+      height: 100%;
+      padding: 2rem 3rem;
+      box-sizing: border-box;
+      /* display: none; */
+    }
+
+    .nav__items {
+      display: flex;
+      gap: 1rem;
+      flex-direction: column;
+    }
+
+    .nav__items a {
+      color: white;
+      text-decoration: none;
+    }
+
+    .header__nav .close {
+      /* position: absolute; */
+      width: 50px;
+      float: right;
+      clear: both;
+      height: 30px;
+      display: block;
+      background-color: green;
+      text-align: center;
+      padding: 1rem 0 0 0;
+      cursor: pointer;
+    }
+
+    .nav__open {
+      /* display: block; */
+      right: 0;
+      transition: right 1s ease;
+    }
+
+    .nav__close {
+      right: -100%;
+      transition: right 1s ease;
+    }
+
+    .hamburger {
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+      align-items: flex-end;
+    }
+
+    .hamburger__line {
+      width: 30px;
+      height: 3px;
+      background: white;
+    }
+
+    @media (min-width: 550px) {
+      nav {
+        background: none;
+        position: static;
+        width: 100%;
+        height: 100%;
+        /* right: 0; */
+        padding: 0;
+        box-sizing: border-box;
+        display: flex;
+        justify-content: flex-end;
+      }
+
+      .header__nav .close {
+        display: none;
+      }
+
+      .nav__items {
+        display: flex;
+        gap: 1rem;
+        flex-direction: row;
+        align-items: center;
+      }
+
+      .hamburger {
+        display: flex;
+        flex-direction: column;
+        gap: 0.3rem;
+        align-items: flex-end;
+        visibility: hidden;
+      }
+    }
+  </style>
+  <body>
+    <header>
+      <div class="container header__container">
+        <div class="logo">
+          <h2>Logo</h2>
+        </div>
+        <nav class="header__nav">
+          <span class="close">X</span>
+          <div class="nav__items">
+            <a href="#">Home</a>
+            <a href="#">Home</a>
+            <a href="#">Home</a>
+            <a href="#">Home</a>
+            <a href="#">Home</a>
+          </div>
+        </nav>
+        <div class="hamburger">
+          <div class="hamburger__line"></div>
+          <div class="hamburger__line"></div>
+          <div class="hamburger__line"></div>
+        </div>
+      </div>
+    </header>
+
+    <script>
+      let hamburger = document.querySelector(".hamburger");
+      let nav = document.querySelector("nav");
+      let close = document.querySelector(".close");
+
+      hamburger.addEventListener("click", () => {
+        nav.classList.add("nav__open");
+        nav.classList.remove("nav__close");
+      });
+
+      close.addEventListener("click", () => {
+        nav.classList.remove("nav__open");
+        nav.classList.add("nav__close");
+      });
+    </script>
+  </body>
+</html>
